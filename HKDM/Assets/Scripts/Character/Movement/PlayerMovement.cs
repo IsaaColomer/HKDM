@@ -18,7 +18,10 @@ public class PlayerMovement : MonoBehaviour {
     private float sensMultiplier = 1f;
     
     //Movement
+    public float divider = 1.3f;
+    public float startMoveSpeed = 4500f;
     public float moveSpeed = 4500;
+    public float onAirMoveSpeed;
     public float maxSpeed = 20;
     public bool grounded;
     public LayerMask whatIsGround;
@@ -48,6 +51,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        onAirMoveSpeed = moveSpeed / divider;
+        startMoveSpeed = moveSpeed;
     }
     
     void Start() {
@@ -62,6 +67,14 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
+        if(!grounded)
+        {
+            moveSpeed = onAirMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = startMoveSpeed;
+        }
         MyInput();
         Look();
     }
