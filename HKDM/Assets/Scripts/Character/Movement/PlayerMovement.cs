@@ -262,6 +262,7 @@ public class PlayerMovement : MonoBehaviour {
             //FLOOR
             if (IsFloor(normal)) {
                 grounded = true;
+                GameObject.Find("TpGun").GetComponent<TpGun>().hasActivated = false;
                 cancellingGrounded = false;
                 normalVector = normal;
                 CancelInvoke(nameof(StopGrounded));

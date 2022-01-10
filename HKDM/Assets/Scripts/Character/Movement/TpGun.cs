@@ -7,31 +7,32 @@ public class TpGun : MonoBehaviour
     public float range;
     public float impulseForce;
     public LayerMask grappable;
+
+    public ForceMode forceMode;
     public float minDistance;
+    public bool hasActivated;
     // Start is called before the first frame update
     void Start()
     {
-        
+        hasActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        if(Input.GetMouseButton(0))
-        {
-            if(Physics.Raycast(transform.position, transform.forward, out hit, range, grappable))
+            if(Input.GetKey(KeyCode.E)&&GameObject.Find("GGun").GetComponent<GrapplingGun>().isGrappling)
             {
-                GameObject.Find("Character").GetComponent<Rigidbody>().AddForce((impulseForce*transform.forward), ForceMode.Impulse);
-                Debug.DrawLine(transform.position, transform.position +transform.forward*hit.distance, Color.black);
-                if(Vector3.Distance(transform.position, hit.transform.position) <= minDistance)
+                hasActivated = true;
+                GameObject.Find("Character").GetComponent<Rigidbody>().AddForce((impulseForce*transform.forward), forceMode);
+                Debug.DrawLine(transform.position, transform.position +transform.forward*GameObject.Find("GGun").GetComponent<GrapplingGun>().hit.distance, Color.black);
+                if(Vector3.Distance(transform.position, GameObject.Find("GGun").GetComponent<GrapplingGun>().hit.transform.position) <= minDistance)
                 {
                     GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero;
                     Debug.Log("Reached");
                 }
             }
             Debug.Log("Mouse Down");
-        }
+       
 
     }
 }

@@ -10,6 +10,8 @@ public class GrapplingGun : MonoBehaviour {
     private SpringJoint joint;
     public bool isGrappling;
 
+    public RaycastHit hit;
+
     void Awake() {
         lr = GetComponent<LineRenderer>();
         isGrappling = false;
@@ -19,11 +21,11 @@ public class GrapplingGun : MonoBehaviour {
     {
         if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().grounded)
         {
-            maxDistance = 7;
+            maxDistance = 30;
         }
         else
         {
-            maxDistance = 15;
+            maxDistance = 40;
         }
         if (Input.GetMouseButtonDown(0)) {
             StartGrapple();
@@ -42,14 +44,14 @@ public class GrapplingGun : MonoBehaviour {
     /// Call whenever we want to start a grapple
     /// </summary>
     void StartGrapple() {
-        RaycastHit hit;
+        
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable)) {
             isGrappling = true;
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = grapplePoint;
-
+            GameObject.Find("TpGun").GetComponent<TpGun>().hasActivated = false;
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
             //The distance grapple will try to keep from grapple point. 
