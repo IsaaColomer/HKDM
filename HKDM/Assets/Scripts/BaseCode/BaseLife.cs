@@ -15,7 +15,6 @@ public class BaseLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mr.material.color /= myLife*255;
         if(myLife<=0)
         {
             Die();
