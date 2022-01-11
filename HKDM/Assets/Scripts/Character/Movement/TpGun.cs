@@ -23,7 +23,7 @@ public class TpGun : MonoBehaviour
             if(Input.GetKey(KeyCode.E)&&GameObject.Find("GGun").GetComponent<GrapplingGun>().isGrappling)
             {
                 hasActivated = true;
-                GameObject.Find("Character").GetComponent<Rigidbody>().AddForce((impulseForce*transform.forward), forceMode);
+                GameObject.Find("Character").GetComponent<Rigidbody>().AddForce(impulseForce*transform.forward, forceMode);
                 Debug.DrawLine(transform.position, transform.position +transform.forward*GameObject.Find("GGun").GetComponent<GrapplingGun>().hit.distance, Color.black);
                 if(Vector3.Distance(transform.position, GameObject.Find("GGun").GetComponent<GrapplingGun>().hit.transform.position) <= minDistance)
                 {
@@ -31,8 +31,7 @@ public class TpGun : MonoBehaviour
                     Debug.Log("Reached");
                 }
             }
-            Debug.Log("Mouse Down");
-       
+                
 
     }
 }

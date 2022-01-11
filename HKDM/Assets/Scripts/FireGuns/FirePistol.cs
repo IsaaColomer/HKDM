@@ -31,7 +31,7 @@ public class FirePistol : MonoBehaviour
             {
                 if(hit.transform.tag == "Target")
                 {
-                   Debug.Log("Hitted: " + hit.transform.name);
+                   hit.transform.GetComponent<BaseLife>().TakeDamageFromPistolGun(5f);
                    positionWhenHit = transform.position;
                    cameraTransform = Camera.main.transform.forward;
                 }                

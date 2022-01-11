@@ -19,7 +19,6 @@ public class BaseLife : MonoBehaviour
         {
             Die();
         }
-        Debug.Log(myLife);
     }
     public void Die()
     {
