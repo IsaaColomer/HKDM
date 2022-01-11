@@ -67,6 +67,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
+        if(Input.GetKeyDown(KeyCode.T) && !grounded)
+        {
+            rb.velocity = Vector3.zero;
+        }
         if(!grounded)
         {
             moveSpeed = onAirMoveSpeed;
