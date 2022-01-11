@@ -1,0 +1,36 @@
+Date : 2022-01-11 11:29:46
+Directory : h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts
+Total : 7 files,  416 codes, 63 comments, 102 blanks, all 581 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |          7 |        416 |         63 |        102 |        581 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |          7 |        416 |         63 |        102 |        581 |
+| Character                                                                            |          5 |        291 |         51 |         78 |        420 |
+| Character\Mouse                                                                      |          2 |         29 |          2 |         11 |         42 |
+| Character\Movement                                                                   |          3 |        262 |         49 |         67 |        378 |
+| FireGuns                                                                             |          1 |         54 |          2 |          4 |         60 |
+| GGun                                                                                 |          1 |         71 |         10 |         20 |        101 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                             | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\Character\Mouse\MouseLook.cs         | C#       |         22 |          2 |          7 |         31 |
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\Character\Mouse\MoveCamera.cs        | C#       |          7 |          0 |          4 |         11 |
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\Character\Movement\Movement.cs       | C#       |         42 |          3 |          5 |         50 |
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\Character\Movement\PlayerMovement.cs | C#       |        189 |         44 |         56 |        289 |
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\Character\Movement\TpGun.cs          | C#       |         31 |          2 |          6 |         39 |
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\FireGuns\FirePistol.cs               | C#       |         54 |          2 |          4 |         60 |
+| h:\Github\Project-HKDM\HKDM\HKDM\Assets\Scripts\GGun\GrapplingGun.cs                 | C#       |         71 |         10 |         20 |        101 |
+| Total                                                                                |          |        416 |         63 |        102 |        581 |
++--------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
