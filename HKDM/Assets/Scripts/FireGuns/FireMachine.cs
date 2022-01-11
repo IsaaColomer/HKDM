@@ -9,6 +9,7 @@ public class FireMachine : MonoBehaviour
     public float timeToNextShot;
 
     public float ammountOfBullets = 30;
+    public float damage = 10f;
     [SerializeField] private float shootedBullets = 0;
     public float timeToReload = 2f;
     private float timeToReload2;
@@ -43,6 +44,7 @@ public class FireMachine : MonoBehaviour
                    Debug.Log("Hitted with machinegun: " + hit.transform.name);
                    positionWhenHit = transform.position;
                    cameraTransform = Camera.main.transform.forward;
+                   hit.transform.GetComponent<BaseLife>().TakeDamageFromMachineGun(damage);
                 }                
                 canShoot = false;
             }
