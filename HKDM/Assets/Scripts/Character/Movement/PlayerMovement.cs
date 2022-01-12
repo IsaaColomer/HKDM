@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour {
     public float maxSpeed = 20;
     public bool grounded;
     public LayerMask whatIsGround;
+
+    public GameObject body;
     
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
@@ -100,7 +102,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void StartCrouch() {
-        transform.localScale = crouchScale;
+        body.transform.localScale = crouchScale;
         transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         if (rb.velocity.magnitude > 0.5f) {
             if (grounded) {
@@ -110,7 +112,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void StopCrouch() {
-        transform.localScale = playerScale;
+        body.transform.localScale = playerScale;
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 

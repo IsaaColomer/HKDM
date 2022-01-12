@@ -1728,6 +1728,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  body: {fileID: 918175511}
   counterMovement: 0.175
   maxSlopeAngle: 50
   slideForce: 400
