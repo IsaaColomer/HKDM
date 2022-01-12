@@ -42,10 +42,8 @@ public class FireMachine : MonoBehaviour
             {
                 if(hit.transform.tag == "Target")
                 {
-                   Debug.Log("Hitted with machinegun: " + hit.transform.name);
                    if(hit.transform.gameObject.layer == LayerMask.NameToLayer("GroundEnemy"))
                     {
-                        Debug.Log("hitted ground enemy");
                         hit.transform.GetComponent<Rigidbody>().AddExplosionForce(shootingForce,hit.transform.position,0.1f);
                         canShoot = false;
                     }
@@ -62,7 +60,6 @@ public class FireMachine : MonoBehaviour
             if(timeToNextShot > 0)
             {
                 timeToNextShot-=Time.deltaTime;
-                //Debug.DrawLine(positionWhenHit.position, positionWhenHit.position+(cameraTransform*hit.distance), Color.green);
                 lr.SetPosition(0, positionWhenHit);
                 lr.SetPosition(1, positionWhenHit+(cameraTransform*hit.distance));
             }
