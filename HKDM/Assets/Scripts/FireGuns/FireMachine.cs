@@ -21,6 +21,7 @@ public class FireMachine : MonoBehaviour
     public bool canShootReload;
     [SerializeField] private bool startBulletCounter;
     [SerializeField] private Vector3 cameraTransform;
+    public float shootingForce;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,10 +43,17 @@ public class FireMachine : MonoBehaviour
                 if(hit.transform.tag == "Target")
                 {
                    Debug.Log("Hitted with machinegun: " + hit.transform.name);
+                   if(hit.transform.gameObject.layer == LayerMask.NameToLayer("GroundEnemy"))
+                    {
+                        Debug.Log("hitted ground enemy");
+                        hit.transform.GetComponent<Rigidbody>().AddExplosionForce(shootingForce,hit.transform.position,0.1f);
+                        canShoot = false;
+                    }
                    positionWhenHit = transform.position;
                    cameraTransform = Camera.main.transform.forward;
                    hit.transform.GetComponent<BaseLife>().TakeDamageFromMachineGun(damage);
-                }                
+                }
+                Debug.Log(hit.transform.tag);                
                 canShoot = false;
             }
         }

@@ -11,6 +11,7 @@ public class FirePistol : MonoBehaviour
     [SerializeField] private LineRenderer lr;
     public float weaponRange;
     public bool canShoot;
+    public float shootingForce = 10f;
     [SerializeField] private bool startBulletCounter;
     [SerializeField] private Vector3 cameraTransform;
     // Start is called before the first frame update
@@ -31,9 +32,16 @@ public class FirePistol : MonoBehaviour
             {
                 if(hit.transform.tag == "Target")
                 {
-                   hit.transform.GetComponent<BaseLife>().TakeDamageFromPistolGun(5f);
-                   positionWhenHit = transform.position;
-                   cameraTransform = Camera.main.transform.forward;
+                    if(hit.transform.gameObject.layer == LayerMask.NameToLayer("GroundEnemy"))
+                    {
+                        Debug.Log("hitted ground enemy");
+                        hit.transform.GetComponent<Rigidbody>().AddExplosionForce(shootingForce,hit.transform.position,0.1f);
+                        canShoot = false;
+                    }
+                    hit.transform.GetComponent<BaseLife>().TakeDamageFromPistolGun(5f);
+                    positionWhenHit = transform.position;
+                    cameraTransform = Camera.main.transform.forward;
+                    canShoot = false;
                 }                
                 canShoot = false;
             }
