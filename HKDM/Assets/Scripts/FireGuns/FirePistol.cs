@@ -42,6 +42,10 @@ public class FirePistol : MonoBehaviour
                     positionWhenHit = transform.position;
                     cameraTransform = Camera.main.transform.forward;
                     canShoot = false;
+                }
+                if(hit.transform.tag == "Light")
+                {
+                    GameObject.Find("L").GetComponent<LightCode>().hitted = true;
                 }                
                 canShoot = false;
             }
