@@ -5,6 +5,8 @@ using UnityEngine;
 public class FirePistol : MonoBehaviour
 {
     public RaycastHit hit;
+    public GameObject bH;
+    [SerializeField] private List<GameObject> bHList = new List<GameObject>();
     public float timeToNextShot;
     [SerializeField] private float timeToNextShot2;
     [SerializeField] private Vector3 positionWhenHit;
@@ -12,6 +14,7 @@ public class FirePistol : MonoBehaviour
     public float weaponRange;
     public bool canShoot;
     public float shootingForce = 10f;
+    private Vector3 hitPoint;
     [SerializeField] private bool startBulletCounter;
     [SerializeField] private Vector3 cameraTransform;
     // Start is called before the first frame update
@@ -36,17 +39,19 @@ public class FirePistol : MonoBehaviour
                     {
                         Debug.Log("hitted ground enemy");
                         hit.transform.GetComponent<Rigidbody>().AddExplosionForce(shootingForce,hit.transform.position,0.1f);
+                        
+                        
                         canShoot = false;
+                        
                     }
+                    bHList.Add(Instantiate(bH, hit.point, Quaternion.identity));
                     hit.transform.GetComponent<BaseLife>().TakeDamageFromPistolGun(5f);
                     positionWhenHit = transform.position;
                     cameraTransform = Camera.main.transform.forward;
+                    hitPoint = hit.point;
                     canShoot = false;
                 }
-                if(hit.transform.tag == "Light")
-                {
-                    GameObject.Find("L").GetComponent<LightCode>().hitted = true;
-                }                
+                              
                 canShoot = false;
             }
         }
@@ -56,12 +61,16 @@ public class FirePistol : MonoBehaviour
             {
                 timeToNextShot-=Time.deltaTime;
                 //Debug.DrawLine(positionWhenHit.position, positionWhenHit.position+(cameraTransform*hit.distance), Color.green);
-                lr.SetPosition(0, positionWhenHit);
-                lr.SetPosition(1, positionWhenHit+(cameraTransform*hit.distance));
+                Debug.DrawLine(positionWhenHit, hit.point, Color.green);
             }
             else
             {
                 canShoot = true;
+                for(int i = 0; i < bHList.Count; i++)
+                {
+                    Destroy(bHList[i]);
+                }
+                bHList.Clear();
                 timeToNextShot = timeToNextShot2;
                 startBulletCounter = false;
             }
