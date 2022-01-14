@@ -17,6 +17,7 @@ public class ArmAnimation : MonoBehaviour
      if(GameObject.Find("GGun").GetComponent<GrapplingGun>().isGrappling)
      {
         anim.Play("Armature|ArmatureAction");
+        anim.speed = 3f;
      }   
      else
      {

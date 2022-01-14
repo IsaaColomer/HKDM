@@ -44,8 +44,8 @@ public class FirePistol : MonoBehaviour
                         canShoot = false;
                         
                     }
-                    bHList.Add(Instantiate(bH, hit.point, Quaternion.identity));
-                    hit.transform.GetComponent<BaseLife>().TakeDamageFromPistolGun(5f);
+                    if(canShoot)    bHList.Add(Instantiate(bH, hit.point, Quaternion.identity));
+                    if(hit.transform.GetComponent<BaseLife>())    hit.transform.GetComponent<BaseLife>().TakeDamageFromPistolGun(5f);
                     positionWhenHit = transform.position;
                     cameraTransform = Camera.main.transform.forward;
                     hitPoint = hit.point;
