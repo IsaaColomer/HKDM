@@ -16,11 +16,11 @@ public class ArmAnimation : MonoBehaviour
     {
      if(GameObject.Find("GGun").GetComponent<GrapplingGun>().isGrappling)
      {
-        //anim.Play("Armature|ArmatureAction");
+        anim.Play("Armature|ArmatureAction");
      }   
      else
      {
-        //anim.StopPlayback();
+        anim.Play("Idle");
      }
     }
 }

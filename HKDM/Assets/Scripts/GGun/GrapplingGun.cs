@@ -57,7 +57,7 @@ public class GrapplingGun : MonoBehaviour {
                 if(hit.transform.tag == "Light")
                 {
                     GameObject.Find("L").GetComponent<LightCode>().hitted = true;
-                }  
+                }
             
 
             //The distance grapple will try to keep from grapple point. 
@@ -79,6 +79,7 @@ public class GrapplingGun : MonoBehaviour {
     /// Call whenever we want to stop a grapple
     /// </summary>
     void StopGrapple() {
+         GameObject.Find("L").GetComponent<LightCode>().hitted = false;
         isGrappling = false;
         lr.positionCount = 0;
         Destroy(joint);
