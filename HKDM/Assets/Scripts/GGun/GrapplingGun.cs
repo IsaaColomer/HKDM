@@ -53,13 +53,6 @@ public class GrapplingGun : MonoBehaviour {
             joint.connectedAnchor = grapplePoint;
             GameObject.Find("TpGun").GetComponent<TpGun>().hasActivated = false;
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-
-                if(hit.transform.tag == "Light")
-                {
-                    GameObject.Find("L").GetComponent<LightCode>().hitted = true;
-                }
-            
-
             //The distance grapple will try to keep from grapple point. 
             joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
