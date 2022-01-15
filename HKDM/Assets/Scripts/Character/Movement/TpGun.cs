@@ -10,6 +10,7 @@ public class TpGun : MonoBehaviour
 
     public ForceMode forceMode;
     public float minDistance;
+    public float timeToStop;
     public bool hasActivated;
     // Start is called before the first frame update
     void Start()
@@ -25,19 +26,19 @@ public class TpGun : MonoBehaviour
         {
             if(hit.transform.GetComponent<Light>().color == Color.green)
             {
-            if(Input.GetKey(KeyCode.E))
-            {
-                hasActivated = true;
-                GameObject.Find("Character").GetComponent<Rigidbody>().AddForce(impulseForce*transform.forward, forceMode);
-                Debug.DrawLine(transform.position, hit.point, Color.cyan);
-                if(Vector3.Distance(transform.position,hit.point)<= minDistance)
+                if(Input.GetKey(KeyCode.E))
                 {
-                    GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    Debug.Log("Reached");
+                    hasActivated = true;
+                    GameObject.Find("Character").GetComponent<Rigidbody>().AddForce(impulseForce*transform.forward, forceMode);
+                    Debug.DrawLine(transform.position, hit.point, Color.cyan);
                 }
-            }
+            
             }
 
+        }
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero; 
         }
                 
 
