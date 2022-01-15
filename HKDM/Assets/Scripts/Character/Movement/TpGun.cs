@@ -6,7 +6,7 @@ public class TpGun : MonoBehaviour
 {
     public float range;
     public float impulseForce;
-    public LayerMask grappable;
+    public LayerMask whatIsGrappleable;
 
     public ForceMode forceMode;
     public float minDistance;
@@ -20,17 +20,25 @@ public class TpGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if(Input.GetKey(KeyCode.E)&&GameObject.Find("GGun").GetComponent<GrapplingGun>().isGrappling)
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range, whatIsGrappleable)) 
+        {
+            if(hit.transform.GetComponent<Light>().color == Color.green)
+            {
+            if(Input.GetKey(KeyCode.E))
             {
                 hasActivated = true;
                 GameObject.Find("Character").GetComponent<Rigidbody>().AddForce(impulseForce*transform.forward, forceMode);
-                Debug.DrawLine(transform.position, transform.position +transform.forward*GameObject.Find("GGun").GetComponent<GrapplingGun>().hit.distance, Color.black);
-                if(Vector3.Distance(transform.position, GameObject.Find("GGun").GetComponent<GrapplingGun>().hit.transform.position) <= minDistance)
+                Debug.DrawLine(transform.position, hit.point, Color.cyan);
+                if(Vector3.Distance(transform.position,hit.point)<= minDistance)
                 {
                     GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero;
                     Debug.Log("Reached");
                 }
             }
+            }
+
+        }
                 
 
     }

@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class LookForLight : MonoBehaviour
 {
+    public static LookForLight instance;
     public float range;
-    public LayerMask whatIsGrappleable;
+    public bool hitted;
+    public RaycastHit hit;
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range, whatIsGrappleable)) 
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range)) 
         {
-            GameObject.Find("L").GetComponent<LightCode>().hitted = true;         
+            if(hit.collider != null && hit.transform.GetComponent<LightCode>().sCol != null)
+            {
+                Debug.Log(hit.transform.GetComponent<LightCode>());
+                if(hit.collider == hit.transform.GetComponent<LightCode>().sCol)
+                {
+                    hit.transform.GetComponent<LightCode>().hitted = true;
+                }
+                else
+                {
+                    hit.transform.GetComponent<LightCode>().hitted  = false;
+                }
+                    
+            }
+
         }
     }
 }
