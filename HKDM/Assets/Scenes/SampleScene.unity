@@ -833,6 +833,10 @@ PrefabInstance:
       propertyPath: bH
       value: 
       objectReference: {fileID: 2518686903436843437, guid: 8651c493fe62ee9438567dc97e84142f, type: 3}
+    - target: {fileID: 4569591945809184771, guid: 962fa36e38a831c458bfd94490d7fea5, type: 3}
+      propertyPath: reloadTime
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4569591945809184780, guid: 962fa36e38a831c458bfd94490d7fea5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3149,6 +3153,10 @@ MonoBehaviour:
   shootingForce: 15000
   startBulletCounter: 0
   cameraTransform: {x: 0, y: 0, z: 0}
+  maxAmmo: 10
+  currentAmo: 10
+  reloadTime: 3
+  anim: {fileID: 0}
 --- !u!23 &1960372023
 MeshRenderer:
   m_ObjectHideFlags: 0

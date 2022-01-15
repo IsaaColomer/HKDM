@@ -17,6 +17,11 @@ public class FirePistol : MonoBehaviour
     private Vector3 hitPoint;
     [SerializeField] private bool startBulletCounter;
     [SerializeField] private Vector3 cameraTransform;
+    public int maxAmmo = 10;
+    [SerializeField]private int currentAmo = 10;
+    public float reloadTime = 3f;
+    public Animator anim;
+    private bool isReloading;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +29,24 @@ public class FirePistol : MonoBehaviour
         timeToNextShot2 = timeToNextShot;
         startBulletCounter = false;
         lr = GetComponent<LineRenderer>();
+        anim = GetComponent<Animator>();
+        isReloading = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isReloading) 
+        {
+            return;
+        }
+        if(currentAmo <= 0)
+        {
+           
+            StartCoroutine(Reload());
+            return;
+        }
+
         if(Input.GetMouseButton(0))
         {
             if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, weaponRange) && canShoot)
@@ -65,6 +83,7 @@ public class FirePistol : MonoBehaviour
             }
             else
             {
+                currentAmo--;
                 canShoot = true;
                 for(int i = 0; i < bHList.Count; i++)
                 {
@@ -80,5 +99,14 @@ public class FirePistol : MonoBehaviour
             startBulletCounter = true;
         }
         
+    }
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        anim.SetBool("Reloading",true);
+        yield return new WaitForSeconds(reloadTime);
+        currentAmo = maxAmmo;
+        anim.SetBool("Reloading",false);
+        isReloading = false;
     }
 }
