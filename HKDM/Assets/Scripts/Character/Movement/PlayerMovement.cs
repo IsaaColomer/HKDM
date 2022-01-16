@@ -311,6 +311,7 @@ public class PlayerMovement : MonoBehaviour {
         if(collision.gameObject.tag == "VerticalWall")
         {
             canWallJump = true;
+            Debug.Log("I can Wall jump");
             cPoints = collision.contacts[0];
         }
     }
@@ -319,6 +320,7 @@ public class PlayerMovement : MonoBehaviour {
         if(other.gameObject.tag == "VerticalWall")
         {
             canWallJump = false;
+            Debug.Log("I cant Wall jump");
             StopGrounded();
         }
     }
