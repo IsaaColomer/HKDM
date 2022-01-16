@@ -1,14 +1,17 @@
+using System.Linq;
 // Some stupid rigidbody based movement by Dani
 
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour {
 
     //Assingables
     public Transform playerCam;
     public Transform orientation;
-    
+    [SerializeField] private bool canWallJump = false;
+    [SerializeField] private ContactPoint cPoints;
     //Other
     private Rigidbody rb;
 
@@ -16,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     private float xRotation;
     private float sensitivity = 50f;
     private float sensMultiplier = 1f;
+    public float wallJumpForce = 300;
     
     //Movement
     public float divider = 1.3f;
@@ -66,8 +70,25 @@ public class PlayerMovement : MonoBehaviour {
     
     private void FixedUpdate() {
         Movement();
+        if(canWallJump)
+            WallJump();
     }
-
+    void WallJump()
+    {
+            if(!grounded)
+            {
+                grounded = false;
+                readyToJump = true;
+                if(Input.GetButton("Jump"))
+                {
+                    grounded = true;
+                    rb.AddForce(cPoints.normal*wallJumpForce);
+                    Debug.Log("c");
+                }
+                Debug.Log("b");
+            }
+        
+    }
     private void Update() {
         if(Input.GetKeyDown(KeyCode.T) && !grounded)
         {
@@ -257,7 +278,9 @@ public class PlayerMovement : MonoBehaviour {
     /// <summary>
     /// Handle ground detection
     /// </summary>
-    private void OnCollisionStay(Collision other) {
+    private void OnCollisionStay(Collision other) 
+    {
+        
         //Make sure we are only checking for walkable layers
         int layer = other.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
@@ -273,8 +296,9 @@ public class PlayerMovement : MonoBehaviour {
                 normalVector = normal;
                 CancelInvoke(nameof(StopGrounded));
             }
+       
         }
-
+        
         //Invoke ground/wall cancel, since we can't check normals with CollisionExit
         float delay = 3f;
         if (!cancellingGrounded) {
@@ -282,9 +306,24 @@ public class PlayerMovement : MonoBehaviour {
             Invoke(nameof(StopGrounded), Time.deltaTime * delay);
         }
     }
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "VerticalWall")
+        {
+            canWallJump = true;
+            cPoints = collision.contacts[0];
+        }
+    }
+    void OnCollisionExit(Collision other)
+    {
+        if(other.gameObject.tag == "VerticalWall")
+        {
+            canWallJump = false;
+            StopGrounded();
+        }
+    }
     private void StopGrounded() {
         grounded = false;
     }
-    
 }
+       
