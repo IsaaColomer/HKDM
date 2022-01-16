@@ -2182,12 +2182,12 @@ MonoBehaviour:
   playerCam: {fileID: 963194228}
   orientation: {fileID: 1345524952}
   canWallJump: 0
-  wallJumpForce: 300
-  divider: 1
+  wallJumpForce: 25
+  divider: 1.125
   startMoveSpeed: 4500
   moveSpeed: 4500
   onAirMoveSpeed: 0
-  maxSpeed: 10
+  maxSpeed: 5
   grounded: 0
   whatIsGround:
     serializedVersion: 2
@@ -2235,13 +2235,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063569121}
-  m_Material: {fileID: 13400000, guid: 116c9bc2d1f8bb042a81dbbb5afb8ec0, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.892882
+  m_Height: 2.5413435
   m_Direction: 1
-  m_Center: {x: 0, y: -0.18248641, z: 0}
+  m_Center: {x: 0, y: -0.058556914, z: 0}
 --- !u!1 &1274370966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,7 +2365,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284658110}
-  m_Material: {fileID: 13400000, guid: bd85864e5ab2e1e4a9d6e64ac324b4ee, type: 2}
+  m_Material: {fileID: 13400000, guid: 116c9bc2d1f8bb042a81dbbb5afb8ec0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3979,7 +3979,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076842414}
-  m_Material: {fileID: 13400000, guid: bd85864e5ab2e1e4a9d6e64ac324b4ee, type: 2}
+  m_Material: {fileID: 13400000, guid: 116c9bc2d1f8bb042a81dbbb5afb8ec0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

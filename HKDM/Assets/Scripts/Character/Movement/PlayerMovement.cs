@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour {
                 if(Input.GetButton("Jump"))
                 {
                     grounded = true;
-                    rb.AddForce(cPoints.normal*wallJumpForce);
+                    rb.AddForce((transform.position - cPoints.point)*wallJumpForce,ForceMode.Impulse);
                     Debug.Log("c");
                 }
                 Debug.Log("b");
