@@ -63,7 +63,11 @@ public class KnowLightSources : MonoBehaviour
                         lightSource.GetComponent<LineRenderer>().material.color = lightSource.GetComponent<Light>().color;
                         lightSource.GetComponent<LineRenderer>().SetPosition(0, lightSource.GetComponent<Light>().transform.position);
                         lightSource.GetComponent<LineRenderer>().SetPosition(1, playerHand.position);                        
-                    }                    
+                    }                 
+                    else
+                    {
+                        lightSource.GetComponent<LineRenderer>().enabled = false;    
+                    }   
                     
                 
             }
