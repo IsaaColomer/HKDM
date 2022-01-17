@@ -22,7 +22,6 @@ public class LookForLight : MonoBehaviour
         {
             if(hit.collider != null && hit.transform.GetComponent<LightCode>().sCol != null)
             {
-                Debug.Log(hit.transform.GetComponent<LightCode>());
                 if(hit.collider == hit.transform.GetComponent<LightCode>().sCol)
                 {
                     hit.transform.GetComponent<LightCode>().hitted = true;

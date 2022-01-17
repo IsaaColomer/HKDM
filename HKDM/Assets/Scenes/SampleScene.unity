@@ -2279,6 +2279,7 @@ GameObject:
   - component: {fileID: 1063569123}
   - component: {fileID: 1063569125}
   - component: {fileID: 1063569126}
+  - component: {fileID: 1063569127}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -2378,6 +2379,22 @@ CapsuleCollider:
   m_Height: 2.5413435
   m_Direction: 1
   m_Center: {x: 0, y: -0.058556914, z: 0}
+--- !u!114 &1063569127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063569121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfff958e9a63b1c469671f72ca89183c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 228321425}
+  healing: 0
+  timeToHeal: 2
+  distanceToHeal: 10
 --- !u!1 &1274370966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +3921,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2067605241}
     m_Modifications:
+    - target: {fileID: 2899976604692764947, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049565888990617757, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049565888990617757, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049565888990617757, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8363054322757256189, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
       propertyPath: m_Name
       value: amadeLampTexturedTaller (1)
@@ -4360,6 +4393,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2067605241}
     m_Modifications:
+    - target: {fileID: 2899976604692764947, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2899976604692764947, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b72506e953f9e7f4a9ce9f9d8a43d48b, type: 2}
     - target: {fileID: 8363054322757256189, guid: 76116dd76d03daf4694483bb0b2e73cf, type: 3}
       propertyPath: m_Name
       value: amadeLampTexturedTaller
