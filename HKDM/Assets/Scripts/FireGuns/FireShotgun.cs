@@ -13,6 +13,9 @@ public class FireShotgun : MonoBehaviour
     public int perdigonCount = 20;
 
     public bool canShoot;
+    public GameObject bH;
+    
+    [SerializeField] private List<GameObject> bHList = new List<GameObject>();
 
     void Start()
     {
@@ -39,6 +42,11 @@ public class FireShotgun : MonoBehaviour
             }
             else
             {
+                for(int i = 0; i < bHList.Count; i++)
+                {
+                    Destroy(bHList[i]);
+                }
+                bHList.Clear();
                 canShoot = true;
                 time = time2;
             }
@@ -71,6 +79,7 @@ public class FireShotgun : MonoBehaviour
             if(hit.transform.tag == "Target")
             {
                 hit.transform.GetComponent<BaseLife>().TakeDamageFromShotgunGun(1f);
+                bHList.Add(Instantiate(bH, hit.point, Quaternion.identity));
             }
              Debug.DrawLine( transform.position, transform.position+(direction*hit.distance), Color.red );    
         }
