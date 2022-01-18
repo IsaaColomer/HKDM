@@ -17,14 +17,30 @@ public class FireShotgun : MonoBehaviour
     
     [SerializeField] private List<GameObject> bHList = new List<GameObject>();
 
+    public int maxAmmo = 2;
+    [SerializeField]private int currentAmo = 2;
+    public float reloadTime = 3f;
+    public Animator anim;
+    private bool isReloading;
     void Start()
     {
         canShoot = true;
         time2 = time;
+        isReloading = false;
     }
 
     void Update()
     {
+        if(isReloading) 
+        {
+            return;
+        }
+        if(currentAmo <= 0)
+        {
+           
+            StartCoroutine(Reload());
+            return;
+        }
         if(Input.GetMouseButton(0) && canShoot)
         {
             for(int i = 0; i < 20; i++)
@@ -32,6 +48,7 @@ public class FireShotgun : MonoBehaviour
                 ShootRay();
                 canShoot = false;
             }
+                currentAmo--;
         }
         if(!canShoot)
         {
@@ -83,6 +100,15 @@ public class FireShotgun : MonoBehaviour
             }
              Debug.DrawLine( transform.position, transform.position+(direction*hit.distance), Color.red );    
         }
+    }
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        anim.SetBool("reload",true);
+        yield return new WaitForSeconds(reloadTime);
+        currentAmo = maxAmmo;
+        anim.SetBool("reload",false);
+        isReloading = false;
     }
 
     

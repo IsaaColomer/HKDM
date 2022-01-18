@@ -44,7 +44,7 @@ public class FireMachine : MonoBehaviour
                 {
                    if(hit.transform.gameObject.layer == LayerMask.NameToLayer("GroundEnemy"))
                     {
-                        hit.transform.GetComponent<Rigidbody>().AddExplosionForce(shootingForce,hit.transform.position,0.1f);
+                        hit.transform.GetComponent<Rigidbody>().AddExplosionForce(shootingForce,hit.point,10.0f);
                         canShoot = false;
                     }
                    positionWhenHit = transform.position;
