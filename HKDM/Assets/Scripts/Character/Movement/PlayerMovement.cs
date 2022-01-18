@@ -75,19 +75,16 @@ public class PlayerMovement : MonoBehaviour {
     }
     void WallJump()
     {
-            if(!grounded)
+        if(!grounded)
+        {
+            grounded = false;
+            readyToJump = true;
+            if(Input.GetButton("Jump"))
             {
-                grounded = false;
-                readyToJump = true;
-                if(Input.GetButton("Jump"))
-                {
-                    grounded = true;
-                    rb.AddForce((transform.position - cPoints.point)*wallJumpForce,ForceMode.Impulse);
-                    Debug.Log("c");
-                }
-                Debug.Log("b");
+                grounded = true;
+                rb.AddForce((transform.position - cPoints.point)*wallJumpForce,ForceMode.Impulse);
             }
-        
+        }
     }
     private void Update() {
         if(Input.GetKeyDown(KeyCode.T) && !grounded)
