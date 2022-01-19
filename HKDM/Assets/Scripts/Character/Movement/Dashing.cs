@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dashing : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    public Transform bacK;
+    public Transform back;
     public float explotionRadius = 1f;
     public float force = 1000;
     public Camera camera;
@@ -25,7 +25,7 @@ public class Dashing : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q) && !dashed)
         {
-            rb.AddExplosionForce(force, bacK.position, explotionRadius);
+            rb.AddExplosionForce(force, back.position, explotionRadius);
             dashed = true;
             Debug.Log("Dash");
         }

@@ -22,8 +22,10 @@ public class TpGun : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range, whatIsGrappleable)) 
+        if(Input.GetKey(KeyCode.E))
         {
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range, whatIsGrappleable)) 
+            {
             if(hit.transform.GetComponent<Light>().color == Color.green)
             {
                 if(Input.GetKey(KeyCode.E))
@@ -31,16 +33,15 @@ public class TpGun : MonoBehaviour
                     hasActivated = true;
                     GameObject.Find("Character").GetComponent<Rigidbody>().AddForce(impulseForce*transform.forward, forceMode);
                     Debug.DrawLine(transform.position, hit.point, Color.cyan);
-                }
-            
+                }            
             }
-
         }
+        }
+        
         if(Input.GetKeyUp(KeyCode.E))
         {
             GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero; 
-        }
-                
+        }             
 
     }
 }

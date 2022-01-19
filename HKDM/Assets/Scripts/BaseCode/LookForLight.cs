@@ -20,19 +20,24 @@ public class LookForLight : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range)) 
         {
-            if(hit.collider != null && hit.transform.GetComponent<LightCode>().sCol != null)
+            if(hit.collider != null)
             {
-                if(hit.collider == hit.transform.GetComponent<LightCode>().sCol)
+                if(hit.transform.GetComponent<LightCode>().sCol != null)
                 {
-                    hit.transform.GetComponent<LightCode>().hitted = true;
+                    if(hit.collider == hit.transform.GetComponent<LightCode>().sCol)
+                    {
+                        hit.transform.GetComponent<LightCode>().hitted = true;
+                    }
+                    else
+                    {
+                        hit.transform.GetComponent<LightCode>().hitted  = false;
+                    }
                 }
                 else
                 {
-                    hit.transform.GetComponent<LightCode>().hitted  = false;
-                }
-                    
+                    Debug.Log("No light");
+                }                    
             }
-
         }
     }
 }
