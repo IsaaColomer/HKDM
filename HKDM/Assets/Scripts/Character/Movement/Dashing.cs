@@ -10,6 +10,7 @@ public class Dashing : MonoBehaviour
     public float explotionRadius = 1f;
     public float force = 1000;
     public Camera camera;
+    private float groundForce;
     public float timeToDash = 2f;
     private float timeToDash2;
     private bool dashed;
@@ -19,6 +20,7 @@ public class Dashing : MonoBehaviour
         timeToDash2 = timeToDash;
         rb = GetComponent<Rigidbody>();
         dashed =false;
+        groundForce = force*10;
     }
 
     // Update is called once per frame
@@ -26,10 +28,20 @@ public class Dashing : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q) && !dashed)
         {
-            rb.AddForce(force*camera.transform.forward, forceMode);
+            if(!GetComponent<PlayerMovement>().grounded)
+            {
+                Debug.Log("Dash");
+                rb.AddForce(force*camera.transform.forward, forceMode);
+            }
+            if(GetComponent<PlayerMovement>().grounded)
+            {
+                Debug.Log("Ground Dash");
+                rb.AddForce(groundForce*camera.transform.forward, forceMode);
+            }
+
             //rb.AddExplosionForce(force, back.position, explotionRadius);
             dashed = true;
-            Debug.Log("Dash");
+            
         }
         if(dashed)
         {
