@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseLife : MonoBehaviour
 {
     public float myLife = 100;
+    public bool isGrappable;
     private MeshRenderer mr;
     // Start is called before the first frame update
     void Start()

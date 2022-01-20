@@ -12,6 +12,7 @@ public class TpGun : MonoBehaviour
     public float minDistance;
     public float timeToStop;
     public bool hasActivated;
+    public float approachSpeed = 7;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,9 @@ public class TpGun : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range, whatIsGrappleable)) 
             {
-            if(hit.transform.GetComponent<Light>().color == Color.green)
+            if(hit.transform.GetComponent<Light>() != null)
+            {
+                if(hit.transform.GetComponent<Light>().color == Color.green)
             {
                 if(Input.GetKey(KeyCode.E))
                 {
@@ -34,6 +37,15 @@ public class TpGun : MonoBehaviour
                     GameObject.Find("Character").GetComponent<Rigidbody>().AddForce(impulseForce*transform.forward, forceMode);
                     Debug.DrawLine(transform.position, hit.point, Color.cyan);
                 }            
+            }
+            }
+
+            if(hit.transform.GetComponent<BaseLife>().isGrappable)
+            {
+                
+                    hit.transform.position = Vector3.MoveTowards(hit.transform.position, transform.position, Time.deltaTime*approachSpeed);
+                    Debug.DrawLine(transform.position, hit.point, Color.cyan);
+                
             }
         }
         }
