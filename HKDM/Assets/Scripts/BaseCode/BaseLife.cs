@@ -7,10 +7,12 @@ public class BaseLife : MonoBehaviour
     public float myLife = 100;
     public bool isGrappable;
     private MeshRenderer mr;
+    public Quaternion startRotation;
     // Start is called before the first frame update
     void Start()
     {
         mr = GetComponent<MeshRenderer>();
+        startRotation = transform.rotation;
     }
 
     // Update is called once per frame

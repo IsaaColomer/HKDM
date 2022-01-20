@@ -13,6 +13,9 @@ public class TpGun : MonoBehaviour
     public float timeToStop;
     public bool hasActivated;
     public float approachSpeed = 7;
+    public float timeForApproach;
+    public float distanceToHand;
+    public float rotationSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +45,9 @@ public class TpGun : MonoBehaviour
 
             if(hit.transform.GetComponent<BaseLife>().isGrappable)
             {
+                StartCoroutine(Aproach(hit));
                 
-                    hit.transform.position = Vector3.MoveTowards(hit.transform.position, transform.position, Time.deltaTime*approachSpeed);
-                    Debug.DrawLine(transform.position, hit.point, Color.cyan);
+                Debug.DrawLine(transform.position, hit.point, Color.cyan);
                 
             }
         }
@@ -55,5 +58,14 @@ public class TpGun : MonoBehaviour
             GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero; 
         }             
 
+    }
+    IEnumerator Aproach(RaycastHit hit)
+    {
+        while(Vector3.Distance(hit.transform.position, transform.position) > distanceToHand)
+        {
+            yield return new WaitForSeconds(timeForApproach);
+            hit.transform.position = Vector3.MoveTowards(hit.transform.position, transform.position, Time.deltaTime*approachSpeed);
+        } 
+        hit.transform.rotation = Quaternion.Slerp(hit.transform.rotation,hit.transform.GetComponent<BaseLife>().startRotation, Time.deltaTime * rotationSpeed);
     }
 }

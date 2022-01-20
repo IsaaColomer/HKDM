@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 114191266645572488}
   - component: {fileID: 1437253798}
   - component: {fileID: 1437253797}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Cone_1
   m_TagString: Target
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313596816543148}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bd85864e5ab2e1e4a9d6e64ac324b4ee, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 1
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
