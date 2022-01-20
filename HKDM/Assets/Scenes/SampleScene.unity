@@ -942,6 +942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &72336975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2056,7 +2057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462909403858080, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.52
+      value: 14.91
       objectReference: {fileID: 0}
     - target: {fileID: 4462909403858080, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2064,7 +2065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462909403858080, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.12
+      value: -22.34
       objectReference: {fileID: 0}
     - target: {fileID: 4462909403858080, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4568,6 +4569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &507883246
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4894,6 +4896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &545663847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5249,6 +5252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &572014455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5574,6 +5578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &589971296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7764,10 +7769,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cone_1 (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 1313596816543148, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4462909403858080, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -8712,7 +8713,9 @@ MonoBehaviour:
   timeToStop: 1
   hasActivated: 0
   approachSpeed: 7
-  timeForApproach: 0.1
+  timeForApproach: 0.02
+  distanceToHand: 3
+  rotationSpeed: 100
 --- !u!1 &955699253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1313596816543148, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
@@ -8723,20 +8726,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4462909403858080, guid: efad4c19acee8df46a348a9825cde25a, type: 3}
   m_PrefabInstance: {fileID: 50710361}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &955699255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955699253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb1d52dd1f25404a9fcf74dedee02cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myLife: 100
-  isGrappable: 0
 --- !u!54 &955699256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10874,7 +10863,7 @@ PrefabInstance:
     - target: {fileID: 65450340830554810, guid: 062cfb85433b38247a9c0e885ff56553, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 116c9bc2d1f8bb042a81dbbb5afb8ec0, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062cfb85433b38247a9c0e885ff56553, type: 3}
 --- !u!1001 &1179532313
@@ -11286,6 +11275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1234297800
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12677,6 +12667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &1389253766
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13323,6 +13314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1485497906
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15608,6 +15600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1686341485
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15809,6 +15802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1729383315
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17129,6 +17123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &1927549566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17619,6 +17614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1963577551
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19705,6 +19701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLife: 100
   isGrappable: 0
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &2163177415189272000
 BoxCollider:
   m_ObjectHideFlags: 0
