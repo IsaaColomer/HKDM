@@ -8746,6 +8746,7 @@ MonoBehaviour:
   timeForApproach: 0.02
   distanceToHand: 3
   rotationSpeed: 100
+  stopSpeed: 200
 --- !u!1 &955699253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1313596816543148, guid: efad4c19acee8df46a348a9825cde25a, type: 3}

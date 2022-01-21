@@ -78,7 +78,7 @@ public class GrapplingGun : MonoBehaviour {
     /// Call whenever we want to stop a grapple
     /// </summary>
     void StopGrapple() {
-         GameObject.Find("L").GetComponent<LightCode>().hitted = false;
+        GameObject.Find("L").GetComponent<LightCode>().hitted = false;
         isGrappling = false;
         lr.positionCount = 0;
         Destroy(joint);

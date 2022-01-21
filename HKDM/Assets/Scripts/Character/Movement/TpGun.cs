@@ -16,6 +16,7 @@ public class TpGun : MonoBehaviour
     public float timeForApproach;
     public float distanceToHand;
     public float rotationSpeed;
+    public float stopSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +56,7 @@ public class TpGun : MonoBehaviour
         
         if(Input.GetKeyUp(KeyCode.E))
         {
-            GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.zero; 
+            GameObject.Find("Character").GetComponent<Rigidbody>().velocity = Vector3.Lerp(GameObject.Find("Character").GetComponent<Rigidbody>().velocity,Vector3.zero, Time.deltaTime*stopSpeed); 
         }             
 
     }
