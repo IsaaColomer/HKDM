@@ -23,7 +23,7 @@ public class ExplosionBox : MonoBehaviour
     void Update()
     {
         CheckHitted();
-        if(gameObject.transform.GetChildCount() == 0)
+        if(gameObject.transform.childCount == 0)
         {
             Destroy(this.gameObject);
         }

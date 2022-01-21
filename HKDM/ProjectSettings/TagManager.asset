@@ -9,6 +9,7 @@ TagManager:
   - Light
   - VerticalWall
   - PlayerCamera
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
