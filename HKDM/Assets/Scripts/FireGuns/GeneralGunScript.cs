@@ -56,13 +56,4 @@ public class GeneralGunScript : MonoBehaviour
         thisPistolBullet = pistolBullets.Count;            
         pistolReloading =false;
     }
-    // IEnumerator Aproach(RaycastHit hit)
-    // {
-    //     while(Vector3.Distance(hit.transform.position, transform.position) > distanceToHand)
-    //     {
-    //         yield return new WaitForSeconds(timeForApproach);
-    //         hit.transform.position = Vector3.MoveTowards(hit.transform.position, transform.position, Time.deltaTime*approachSpeed);
-    //     } 
-    //     hit.transform.rotation = Quaternion.Slerp(hit.transform.rotation,hit.transform.GetComponent<BaseLife>().startRotation, Time.deltaTime * rotationSpeed);
-    // }
 }
