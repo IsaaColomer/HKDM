@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralGunScript : MonoBehaviour
+public class GeneralRifleScript : MonoBehaviour
 {
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public List<GameObject> bullets = new List<GameObject>();
@@ -18,7 +18,7 @@ public class GeneralGunScript : MonoBehaviour
     void Start()
     {
         reloading = false;
-        time = .3f;
+        time = .1f;
         shootThroughBullets = false;
         canShoot = false;
         for(int i = 0; i < bullets.Count; i++)
@@ -33,7 +33,7 @@ public class GeneralGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)&& this.gameObject.name == "FireGun" && bullets.Count > 0 && !reloading)
+        if(Input.GetMouseButton(0)&& this.gameObject.name == "machineGun" && bullets.Count > 0 && !reloading)
         {
             if(canShoot)
             {
@@ -56,7 +56,7 @@ public class GeneralGunScript : MonoBehaviour
             }
             else
             {
-                time = .3f;
+                time = .1f;
                 canShoot = true;
             }
         }
@@ -74,7 +74,7 @@ public class GeneralGunScript : MonoBehaviour
         for(int i = 0; i < totalBullets; i++)
         {
             bullets.Insert(i, bulletPrefab);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
         }     
         yield return new WaitForSeconds(reloadTime);
         thisBullet = bullets.Count;            

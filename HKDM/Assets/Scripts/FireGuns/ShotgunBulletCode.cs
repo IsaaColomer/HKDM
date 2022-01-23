@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletCode : MonoBehaviour
+public class ShotgunBulletCode : MonoBehaviour
 {
     public Rigidbody rb;
-    public float direction;
+    public Vector3 direction;
     public float force;
     public Transform end;
     private LineRenderer lr;
@@ -13,7 +13,6 @@ public class BulletCode : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(force*Camera.main.transform.forward, ForceMode.Impulse);
         lr = GetComponent<LineRenderer>();
         transform.forward = Camera.main.transform.forward;
         end.forward = Camera.main.transform.forward;
