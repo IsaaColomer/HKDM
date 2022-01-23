@@ -5,16 +5,16 @@ using UnityEngine;
 public class LightCode : MonoBehaviour
 {
     public bool hitted;
-    [SerializeField] private Light light;
+    [SerializeField] public Light spotLight;
+    [SerializeField] public Light pointLight;
 
     [SerializeField] public SphereCollider sCol;
     [SerializeField] private Color startLightColor;
     // Start is called before the first frame update
     void Start()
     {
-        light  = GetComponent<Light>();
-        sCol = this.gameObject.GetComponent<SphereCollider>();
-        startLightColor = light.color;
+        sCol = this.gameObject.GetComponentInChildren<SphereCollider>();
+        startLightColor = spotLight.color;
     }
 
     // Update is called once per frame
@@ -24,12 +24,15 @@ public class LightCode : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Alpha1))
             {
-                this.light.color = Color.red;
+                this.spotLight.color = Color.red;
+                pointLight.color = spotLight.color;
             }
             else if(Input.GetKey(KeyCode.Alpha2))
             {
-                this.light.color = Color.green;
+                this.spotLight.color = Color.green;
+                pointLight.color = spotLight.color;
             }
         }
+        
     }
 }
