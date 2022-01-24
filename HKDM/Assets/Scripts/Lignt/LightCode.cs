@@ -10,11 +10,13 @@ public class LightCode : MonoBehaviour
 
     [SerializeField] public SphereCollider sCol;
     [SerializeField] private Color startLightColor;
+    public Color color;
     // Start is called before the first frame update
     void Start()
     {
         sCol = this.gameObject.GetComponentInChildren<SphereCollider>();
         startLightColor = spotLight.color;
+        color = spotLight.color;
     }
 
     // Update is called once per frame
@@ -26,11 +28,13 @@ public class LightCode : MonoBehaviour
             {
                 this.spotLight.color = Color.red;
                 pointLight.color = spotLight.color;
+                color = spotLight.color;
             }
             else if(Input.GetKey(KeyCode.Alpha2))
             {
                 this.spotLight.color = Color.green;
                 pointLight.color = spotLight.color;
+                color = spotLight.color;
             }
         }
         

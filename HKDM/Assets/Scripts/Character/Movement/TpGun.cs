@@ -33,7 +33,7 @@ public class TpGun : MonoBehaviour
             {
             if(hit.transform.GetComponent<Light>() != null)
             {
-                if(hit.transform.GetComponent<Light>().color == Color.green)
+            if(hit.transform.GetComponent<Light>().transform.parent.GetComponent<LightCode>().color == Color.green)
             {
                 if(Input.GetKey(KeyCode.E))
                 {
