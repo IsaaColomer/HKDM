@@ -17,26 +17,18 @@ public class LookForLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range)) 
         {
             if(hit.collider != null)
             {
-                if(hit.transform.GetComponent<LightCode>().sCol != null)
+                if(hit.collider == hit.transform.gameObject.GetComponentInChildren<SphereCollider>())
                 {
-                    if(hit.collider == hit.transform.GetComponent<LightCode>().sCol)
-                    {
-                        hit.transform.GetComponent<LightCode>().hitted = true;
-                    }
-                    else
-                    {
-                        hit.transform.GetComponent<LightCode>().hitted  = false;
-                    }
+                    hit.transform.parent.GetComponent<LightCode>().hitted = true;
                 }
                 else
                 {
-                    Debug.Log("No light");
-                }                    
+                    hit.transform.parent.GetComponent<LightCode>().hitted = false;
+                }                 
             }
         }
     }

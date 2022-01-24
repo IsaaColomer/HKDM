@@ -11,6 +11,7 @@ public class GrapplingGun : MonoBehaviour {
     public bool isGrappling;
 
     public RaycastHit hit;
+    private Transform hittedGameObject;
 
     void Awake() {
         lr = GetComponent<LineRenderer>();
@@ -51,6 +52,7 @@ public class GrapplingGun : MonoBehaviour {
         {
             if(hit.transform.GetComponent<Light>().color == Color.red)
             {
+                hittedGameObject = hit.transform.parent;
                 isGrappling = true;
                 grapplePoint = hit.point;
                 joint = player.gameObject.AddComponent<SpringJoint>();
@@ -78,7 +80,7 @@ public class GrapplingGun : MonoBehaviour {
     /// Call whenever we want to stop a grapple
     /// </summary>
     void StopGrapple() {
-        GameObject.Find("L").GetComponent<LightCode>().hitted = false;
+        hittedGameObject.GetComponent<LightCode>().hitted = false;
         isGrappling = false;
         lr.positionCount = 0;
         Destroy(joint);
