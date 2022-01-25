@@ -6,8 +6,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour {
-
-
+    public static PlayerMovement instace;
     [Header("Assignables")]
     public Camera camera;
     public Transform playerCam;
@@ -69,6 +68,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start()
     {
+        instace = this;
         playerScale = transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
