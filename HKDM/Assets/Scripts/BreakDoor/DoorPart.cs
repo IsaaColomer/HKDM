@@ -10,7 +10,7 @@ public class DoorPart : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Debug.Log("Adeu");
-        rb.AddExplosionForce(1000000f, transform.position, 3f);
+        rb.AddExplosionForce(5000f, transform.position, 1f);
     }
 
     // Update is called once per frame

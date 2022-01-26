@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5089333879061124414}
   m_Layer: 0
   m_Name: BulletPrefab
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bec6d36d4ea1645a2937fe17ef394e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  direction: 0
   force: 25
   end: {fileID: 2759850375902571817}
 --- !u!120 &5089333879061124414

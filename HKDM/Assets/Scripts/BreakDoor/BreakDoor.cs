@@ -5,12 +5,16 @@ using UnityEngine;
 public class BreakDoor : MonoBehaviour
 {
     private Rigidbody[] sonsArray;
+    public string name;
     // Start is called before the first frame update
     void Start()
     {
             foreach (Transform child in transform)
             {
-                child.gameObject.SetActive(false);
+                if(child.name != name)
+                {
+                    child.gameObject.SetActive(false);
+                }                    
             }
     }
 
@@ -27,8 +31,27 @@ public class BreakDoor : MonoBehaviour
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(true);
+                if(child.name == name)
+                {
+                    child.gameObject.SetActive(false);
+                }
             }
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
+        else
+        {
+            if(other.tag == "PlayerBullet")
+            {
+                foreach (Transform child in transform)
+                {
+                    child.gameObject.SetActive(true);
+                    if (child.name == name)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+
     }
 }
