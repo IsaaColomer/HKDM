@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1961837928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961837929}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961837929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961837928}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.17000008, y: 3.326806, z: -2.7535133}
+  m_LocalScale: {x: 2.305471, y: 4.8841147, z: 0.105501845}
+  m_Children: []
+  m_Father: {fileID: 2623714136996044663}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535041898528507458
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +63,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6332401908484920895
 MeshFilter:
@@ -113,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &1535041898528507463
 MeshCollider:
@@ -159,7 +190,7 @@ Transform:
   m_LocalScale: {x: 2.305471, y: 4.8841147, z: 0.105501845}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2623714136186167659
 MeshFilter:
@@ -257,6 +288,7 @@ Transform:
   m_LocalPosition: {x: 17.9, y: 0, z: -15.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1961837929}
   - {fileID: 3016252118477575888}
   - {fileID: 1703485820504451888}
   - {fileID: 1513472500101801718}
@@ -303,7 +335,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2623714136996044659}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.123745, y: 4.2294035, z: 1.5249443}
@@ -341,7 +373,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1890492004079557423
 MeshFilter:
@@ -421,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &3781195104078230784
 MeshCollider:
@@ -469,7 +502,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6156551009463899571
 MeshFilter:
@@ -549,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &4080233316698732539
 MeshCollider:
@@ -597,7 +631,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &531889101762282766
 MeshFilter:
@@ -677,6 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &4543097358631937070
 MeshCollider:
@@ -725,7 +760,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3066471899305200028
 MeshFilter:
@@ -805,6 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &5124196848106814506
 MeshCollider:
@@ -849,11 +885,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7612790352125038445}
   m_LocalRotation: {x: -0, y: -0.7071067, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1.0692005, y: 2.5629387, z: -0.33280563}
+  m_LocalPosition: {x: -1.0692005, y: 2.5629387, z: -0.52000046}
   m_LocalScale: {x: 5.642391, y: 5.0789404, z: 5.6423883}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4337083647351190781
 MeshFilter:
@@ -933,6 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &7612790352125038446
 MeshCollider:
@@ -981,7 +1018,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3557164809202134791
 MeshFilter:
@@ -1061,6 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &7619221084280085928
 MeshCollider:
@@ -1109,7 +1147,7 @@ Transform:
   m_LocalScale: {x: 49.647926, y: 49.647907, z: 49.647907}
   m_Children: []
   m_Father: {fileID: 2623714136996044663}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2652891211892062140
 MeshFilter:
@@ -1189,6 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d9b519d98f14409760f457e09daeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfExplosionPosition: 
   timer: 3
 --- !u!64 &8039084004986457089
 MeshCollider:

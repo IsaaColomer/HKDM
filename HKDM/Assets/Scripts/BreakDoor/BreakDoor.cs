@@ -11,7 +11,7 @@ public class BreakDoor : MonoBehaviour
     {
             foreach (Transform child in transform)
             {
-                if(child.name != name)
+                if(child.name !=name)
                 {
                     child.gameObject.SetActive(false);
                 }                    
@@ -52,6 +52,5 @@ public class BreakDoor : MonoBehaviour
                 }
             }
         }
-
     }
 }
