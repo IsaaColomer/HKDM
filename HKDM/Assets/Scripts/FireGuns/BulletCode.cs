@@ -9,6 +9,7 @@ public class BulletCode : MonoBehaviour
     public float force;
     public Transform end;
     private LineRenderer lr;
+    public Transform hitPoint;
     // Start is called before the first frame update
     void Start()
     {

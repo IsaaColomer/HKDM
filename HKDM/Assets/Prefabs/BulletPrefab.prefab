@@ -124,7 +124,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6371152956906092024}
-  m_Material: {fileID: 13400000, guid: 116c9bc2d1f8bb042a81dbbb5afb8ec0, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -162,6 +162,7 @@ MonoBehaviour:
   direction: 0
   force: 25
   end: {fileID: 2759850375902571817}
+  hitPoint: {x: 0, y: 0, z: 0}
 --- !u!120 &5089333879061124414
 LineRenderer:
   m_ObjectHideFlags: 0

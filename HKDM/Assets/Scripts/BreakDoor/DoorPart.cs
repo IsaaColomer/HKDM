@@ -5,6 +5,15 @@ using UnityEngine;
 public class DoorPart : MonoBehaviour
 {
     public float timer;
+    private Rigidbody rb;
+    public GameObject parent;
+    public float f;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        Debug.Log( parent.GetComponent<PartCode>().hitPoint);
+        rb.AddForce(transform.forward*f,ForceMode.Impulse);
+    }
     // Update is called once per frame
     void Update()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PartCode : MonoBehaviour
 {
+    public Vector3 hitPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +42,15 @@ public class PartCode : MonoBehaviour
                             gameObject.transform.GetComponentInParent<BreakDoor>().gameObjectsList[i].gameObject.gameObject.SetActive(false);
                         }
                 }
-                this.gameObject.SetActive(false);
+                hitPoint = other.ClosestPoint(transform.position);
+                StartCoroutine(Wait());
+                Debug.DrawRay(other.ClosestPoint(transform.position), transform.forward, Color.green);
             }
         }
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.SetActive(false);
     }
 }

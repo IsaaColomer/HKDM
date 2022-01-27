@@ -7595,6 +7595,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1474737338}
     m_Modifications:
+    - target: {fileID: 1535041898528507460, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
     - target: {fileID: 2623714136996044659, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
       propertyPath: m_Name
       value: Door (1)
@@ -7642,6 +7646,34 @@ PrefabInstance:
     - target: {fileID: 2623714136996044663, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781195104078230785, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080233316698732536, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543097358631937071, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124196848106814507, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612790352125038447, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619221084280085929, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039084004986457118, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
+      propertyPath: f
+      value: 20000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7adacfd630b2e1d4c800c96a015ce430, type: 3}
