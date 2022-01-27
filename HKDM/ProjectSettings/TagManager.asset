@@ -10,6 +10,7 @@ TagManager:
   - VerticalWall
   - PlayerCamera
   - PlayerBullet
+  - Destroyable
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - GroundEnemy
   - GunCamera
   - PlayerBullet
-  - 
-  - 
+  - Destroyable
+  - Player
   - 
   - 
   - 
