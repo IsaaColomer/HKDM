@@ -10381,7 +10381,7 @@ MonoBehaviour:
   maxSpeed: 15
   counterMovement: 0.175
   maxSlopeAngle: 91
-  slideForce: 400
+  slideForce: 600
   slideCounterMovement: 0.2
   jumpForce: 450
   wallRunGravity: 1
