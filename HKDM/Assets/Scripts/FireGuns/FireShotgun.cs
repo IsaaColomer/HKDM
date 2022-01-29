@@ -96,10 +96,7 @@ public class FireShotgun : MonoBehaviour
             if(hit.transform.tag == "Target")
             {
                 hit.transform.GetComponent<BaseLife>().TakeDamageFromShotgunGun(1f);
-                if(hit.transform.GetComponent<ExplosionBox>() != null)
-                {
-                    hit.transform.GetComponent<ExplosionBox>().hitted = true;
-                }
+                
                 bHList.Add(Instantiate(bH, hit.point, Quaternion.identity));
             }
              Debug.DrawLine( transform.position, transform.position+(direction*hit.distance), Color.red );    
