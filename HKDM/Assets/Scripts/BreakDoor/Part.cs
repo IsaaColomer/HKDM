@@ -40,6 +40,12 @@ public class Part : MonoBehaviour
                 gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.useGravity = true;
                 gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.AddExplosionForce(force, other.ClosestPoint(transform.position), .2f);
                 gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().startCount = true;
+                gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.constraints = RigidbodyConstraints.None;
+                if(gameObject.GetComponentInParent<BoxCollider>().enabled)
+                {
+                    gameObject.GetComponentInParent<BoxCollider>().enabled = false;
+                }
+                
             }
         }
     }
