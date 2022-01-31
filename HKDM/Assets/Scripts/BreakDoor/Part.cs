@@ -12,6 +12,7 @@ public class Part : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeAll;
         rb.useGravity = false;
         startCount = false;
     }
@@ -37,10 +38,10 @@ public class Part : MonoBehaviour
         {
             for(int i = 0; i < gameObject.GetComponentInParent<General>().sons.Count; i++)
             {
+                gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.constraints = RigidbodyConstraints.None;
                 gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.useGravity = true;
                 gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.AddExplosionForce(force, other.ClosestPoint(transform.position), .2f);
                 gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().startCount = true;
-                gameObject.GetComponentInParent<General>().sons[i].GetComponent<Part>().rb.constraints = RigidbodyConstraints.None;
                 if(gameObject.GetComponentInParent<BoxCollider>().enabled)
                 {
                     gameObject.GetComponentInParent<BoxCollider>().enabled = false;
