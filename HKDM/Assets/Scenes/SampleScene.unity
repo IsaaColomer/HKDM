@@ -1364,6 +1364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 500
   range: 4
+  particle: {fileID: 0}
 --- !u!136 &122818668
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10437,6 +10438,7 @@ GameObject:
   - component: {fileID: 1063569126}
   - component: {fileID: 1063569127}
   - component: {fileID: 1063569128}
+  - component: {fileID: 1063569129}
   m_Layer: 11
   m_Name: Character
   m_TagString: Player
@@ -10487,10 +10489,6 @@ MonoBehaviour:
   slideForce: 600
   slideCounterMovement: 0.2
   jumpForce: 550
-  wallRunGravity: 0.2
-  wallRunRotateAmount: 15
-  isWallRunning: 0
-  useWallrunning: 1
   grounded: 1
   crouching: 0
 --- !u!54 &1063569124
@@ -10572,6 +10570,22 @@ MonoBehaviour:
   force: 2000
   camera: {fileID: 963194227}
   timeToDash: 2
+--- !u!114 &1063569129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063569121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a2d03e7a6a63c48a2dfc585ce560be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallRunUpForce: 1500
+  _wallRunPushForce: 2000
+  cam: {fileID: 963194228}
+  head: {fileID: 1345524952}
 --- !u!4 &1073854095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4002104908584724, guid: ead49cebc1fb74a4b999e463ebafe477, type: 3}
@@ -21967,6 +21981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 500
   range: 4
+  particle: {fileID: 0}
 --- !u!136 &4980206205599785056
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -36,16 +36,6 @@ public class PlayerMovement : MonoBehaviour {
     bool jumping;
     private Vector3 normalVector = Vector3.up;
 
-    [Header("Wallrunning")]
-    private float actualWallRotation;
-    private float wallRotationVel;
-    private Vector3 wallNormalVector;
-    public float wallRunGravity = 1;
-    private float wallRunRotation;
-    public float wallRunRotateAmount = 15f;
-    public bool isWallRunning;
-    public bool useWallrunning = true;
-
     [Header("Collisions")]
     public bool grounded;
     public bool crouching;
@@ -73,7 +63,6 @@ public class PlayerMovement : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         readyToJump = true;
-        wallNormalVector = Vector3.up;
     }
 
 
@@ -92,16 +81,6 @@ public class PlayerMovement : MonoBehaviour {
     private void LateUpdate()
     {
         //call the wallrunning Function
-        WallRunning();
-        WallRunRotate();
-    }
-
-    private void WallRunRotate()
-    {
-        FindWallRunRotation();
-        float num = 100f;
-        actualWallRotation = Mathf.SmoothDamp(actualWallRotation, wallRunRotation, ref wallRotationVel, num * Time.deltaTime);
-        //camera.transform.localRotation = Quaternion.Euler(playerCam.rotation.eulerAngles.x, playerCam.rotation.eulerAngles.y, actualWallRotation);
     }
 
     /// <summary>
@@ -197,7 +176,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Jump()
     {
-        if ((grounded || isWallRunning || surfing) && readyToJump)
+        if ((grounded || surfing) && readyToJump)
         {
             MonoBehaviour.print("jumping");
             Vector3 velocity = rb.velocity;
@@ -212,15 +191,9 @@ public class PlayerMovement : MonoBehaviour {
             {
                 rb.velocity = new Vector3(velocity.x, velocity.y / 2f, velocity.z);
             }
-            if (isWallRunning)
-            {
-                rb.AddForce(wallNormalVector * jumpForce * 3f);
-            }
+            
             Invoke("ResetJump", jumpCooldown);
-            if (isWallRunning)
-            {
-                isWallRunning = false;
-            }
+            
         }
     }
 
@@ -299,56 +272,6 @@ public class PlayerMovement : MonoBehaviour {
         return new Vector2(xMag, yMag);
     }
     //a lot of math (dont touch)
-    private void FindWallRunRotation()
-    {
-
-        if (!isWallRunning)
-        {
-            wallRunRotation = 0f;
-            return;
-        }
-        _ = new Vector3(0f, playerCam.transform.rotation.y, 0f).normalized;
-        new Vector3(0f, 0f, 1f);
-        float num = 0f;
-        float current = playerCam.transform.rotation.eulerAngles.y;
-        if (Math.Abs(wallNormalVector.x - 1f) < 0.1f)
-        {
-            num = 90f;
-        }
-        else if (Math.Abs(wallNormalVector.x - -1f) < 0.1f)
-        {
-            num = 270f;
-        }
-        else if (Math.Abs(wallNormalVector.z - 1f) < 0.1f)
-        {
-            num = 0f;
-        }
-        else if (Math.Abs(wallNormalVector.z - -1f) < 0.1f)
-        {
-            num = 180f;
-        }
-        num = Vector3.SignedAngle(new Vector3(0f, 0f, 1f), wallNormalVector, Vector3.up);
-        float num2 = Mathf.DeltaAngle(current, num);
-        wallRunRotation = (0f - num2 / 90f) * wallRunRotateAmount;
-        if (!useWallrunning)
-        {
-            return;
-        }
-        if ((Mathf.Abs(wallRunRotation) < 4f && y > 0f && Math.Abs(x) < 0.1f) || (Mathf.Abs(wallRunRotation) > 22f && y < 0f && Math.Abs(x) < 0.1f))
-        {
-            if (!cancelling)
-            {
-                cancelling = true;
-                CancelInvoke("CancelWallrun");
-                Invoke("CancelWallrun", 0.2f);
-            }
-        }
-        else
-        {
-            cancelling = false;
-            CancelInvoke("CancelWallrun");
-        }
-    }
 
     private bool IsFloor(Vector3 v)
     {
@@ -363,11 +286,6 @@ public class PlayerMovement : MonoBehaviour {
             return num > maxSlopeAngle;
         }
         return false;
-    }
-
-    private bool IsWall(Vector3 v)
-    {
-        return Math.Abs(90f - Vector3.Angle(Vector3.up, v)) < 0.1f;
     }
 
     private bool IsRoof(Vector3 v)
@@ -390,21 +308,10 @@ public class PlayerMovement : MonoBehaviour {
             Vector3 normal = other.contacts[i].normal;
             if (IsFloor(normal))
             {
-                if (isWallRunning)
-                {
-                    isWallRunning = false;
-                }
                 grounded = true;
                 normalVector = normal;
                 cancellingGrounded = false;
                 CancelInvoke("StopGrounded");
-            }
-            if (IsWall(normal) && (layer == (int)whatIsGround || (int)whatIsGround == -1 || layer == LayerMask.NameToLayer("Ground") || layer == LayerMask.NameToLayer("ground"))) //seriously what is this
-            {
-                StartWallRun(normal);
-                onWall = true;
-                cancellingWall = false;
-                CancelInvoke("StopWall");
             }
             if (IsSurf(normal))
             {
@@ -420,11 +327,6 @@ public class PlayerMovement : MonoBehaviour {
             cancellingGrounded = true;
             Invoke("StopGrounded", Time.deltaTime * num);
         }
-        if (!cancellingWall)
-        {
-            cancellingWall = true;
-            Invoke("StopWall", Time.deltaTime * num);
-        }
         if (!cancellingSurf)
         {
             cancellingSurf = true;
@@ -437,53 +339,9 @@ public class PlayerMovement : MonoBehaviour {
         grounded = false;
     }
 
-    private void StopWall()
-    {
-        onWall = false;
-        isWallRunning = false;
-    }
-
     private void StopSurf()
     {
         surfing = false;
-    }
-
-    //wallrunning functions
-    private void CancelWallrun()
-    {
-        //for when we want to stop wallrunning
-        MonoBehaviour.print("cancelled wallrun");
-        Invoke("GetReadyToWallrun", 0.1f);
-        rb.AddForce(wallNormalVector * 600f);
-        useWallrunning = false;
-    }
-
-    private void StartWallRun(Vector3 normal)
-    {
-        MonoBehaviour.print("wallrunning");
-        //cancels all y momentum and then applies an upwards force.
-        if (!grounded && useWallrunning)
-        {
-            wallNormalVector = normal;
-            float num = 20f;
-            if (!isWallRunning)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(Vector3.up * num, ForceMode.Impulse);
-            }
-            isWallRunning = true;
-        }
-    }
-
-    private void WallRunning()
-    {
-        //checks if the wallrunning bool is set to true and if it is then applies
-        //a force to counter gravity enough to make it feel like wallrunning
-        if (isWallRunning)
-        {
-            rb.AddForce(-wallNormalVector * Time.deltaTime * moveSpeed);
-            rb.AddForce(Vector3.up * Time.deltaTime * rb.mass * 40f * wallRunGravity);
-        }
     }
 }
        
