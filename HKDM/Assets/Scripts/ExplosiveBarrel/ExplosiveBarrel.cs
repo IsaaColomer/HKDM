@@ -27,7 +27,6 @@ public class ExplosiveBarrel : MonoBehaviour
         if(other.tag == "PlayerBullet")
         {
             Instantiate(particle, other.ClosestPoint(transform.position), Quaternion.identity);
-            Wait();
             rb.constraints = RigidbodyConstraints.None;
             rb.AddExplosionForce(force,other.ClosestPoint(transform.position),range);
             StartCoroutine(Wait());

@@ -53,7 +53,18 @@ public class Part : MonoBehaviour
                 {
                     gameObject.GetComponentInParent<BoxCollider>().enabled = false;
                 }
-                
+                StartCoroutine(Wait());
+            }
+        }
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
+        if(this.gameObject!=null)
+        {
+            for(int i = 0; i < gameObject.GetComponentInParent<General>().sons.Count; i++)
+            {
+                gameObject.GetComponentInParent<General>().sons.RemoveAt(i);
             }
         }
     }

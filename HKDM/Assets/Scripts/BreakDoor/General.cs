@@ -12,7 +12,14 @@ public class General : MonoBehaviour
         {
             sons.Add(child.gameObject);
             child.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            child.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX|RigidbodyConstraints.FreezePositionY|RigidbodyConstraints.FreezePositionZ;
+            child.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+    void Update()
+    {
+        if(sons.Count == 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
