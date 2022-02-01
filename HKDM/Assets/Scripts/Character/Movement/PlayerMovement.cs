@@ -73,7 +73,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log(rb.velocity.magnitude);
         MyInput();
         Look();
     }

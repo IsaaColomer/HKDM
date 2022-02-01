@@ -4,99 +4,62 @@ using UnityEngine;
 
 public class WallRunning : MonoBehaviour
 {
-    [Header("Wall Running")]
-    [SerializeField] private float _wallRunUpForce;
-    [SerializeField] private float _wallRunPushForce;
-    //<<Summary>> Boolean that is used for adding forces when jumping off the walls, used to determine which direction.
-    private bool isRightWall;
-    private bool isLeftWall;
+    /// <summary>
+    /// Wall run Tutorial stuff, scroll down for full movement
+    /// </summary>
 
-    //Used for effects etc.
-    public static bool isWallRunning;
-    //<<Summary>> Checks the distance from walls and takes the wall that is the closest to the player
-    private float distanceFromLeftWall;
-    private float distanceFromRightWall;
-
-    //Used to add forces.
+    //Wallrunning
     private Rigidbody rb;
-    public Transform cam;
-    public Transform head;
-    private void Awake()
+    public LayerMask whatIsWall;
+    public float jumpFromWallForce;
+    private float yPos;
+    bool isWallRunning;
+    private Vector3 jumpNormal;
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void wallChecker()
+    private void StopWallRun()
     {
-        RaycastHit rightRaycast;
-        RaycastHit leftRaycast;
-
-        if (Physics.Raycast(head.transform.position, head.transform.right, out rightRaycast))
+        isWallRunning = false;
+        rb.useGravity = true;
+    }
+    void Update()
+    {
+        if(isWallRunning)
         {
-            distanceFromRightWall = Vector3.Distance(head.transform.position, rightRaycast.point);
-            if (distanceFromRightWall <= 3f)
+            if(Input.GetKeyDown(KeyCode.Space)&& !PlayerMovement.instace.grounded)
             {
-                isRightWall = true;
-                isLeftWall = false;
+                rb.AddForce(jumpFromWallForce*jumpNormal, ForceMode.Impulse);
+                Debug.Log("Jumped from a wall");
             }
         }
-        if (Physics.Raycast(head.transform.position, -head.transform.right, out leftRaycast))
-        {
-            distanceFromLeftWall = Vector3.Distance(head.transform.position, leftRaycast.point);
-            if (distanceFromLeftWall <= 3f)
-            {
-                isRightWall = false;
-                isLeftWall = true;
-            }
-        }
-
     }
-
-    private void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        wallChecker();
-    }
-
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("RunnableWall"))
+        if(collision.transform.tag == "RunnableWall" && !PlayerMovement.instace.grounded)
         {
             isWallRunning = true;
             rb.useGravity = false;
-
-            if (isLeftWall)
-            {
-                cam.transform.localEulerAngles = new Vector3(0f, 0f, -10f);
-            }
-            if (isRightWall)
-            {
-                cam.transform.localEulerAngles = new Vector3(0f, 0f, 10f);
-            }
+            yPos = collision.contacts[collision.contactCount/2].point.y;
+            jumpNormal = collision.contacts[collision.contactCount/2].normal;
+            Debug.DrawRay(collision.contacts[collision.contactCount/2].point, collision.contacts[collision.contactCount/2].normal,Color.red);
         }
     }
-    private void OnCollisionStay(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
-        if (collision.transform.CompareTag("RunnableWall"))
+        if(collision.transform.tag == "RunnableWall"&& !PlayerMovement.instace.grounded)
         {
-            if (Input.GetKey(KeyCode.Space) && isLeftWall)
-            {
-                rb.AddForce(Vector3.up * _wallRunUpForce, ForceMode.Impulse);
-                rb.AddForce(head.transform.right * _wallRunUpForce, ForceMode.Impulse);
-            }
-            if (Input.GetKey(KeyCode.Space) && isRightWall)
-            {
-                rb.AddForce(Vector3.up * _wallRunUpForce, ForceMode.Impulse);
-                rb.AddForce(-head.transform.right * _wallRunUpForce, ForceMode.Impulse);
-            }
+            isWallRunning = true;
+            rb.useGravity = false;
+            rb.transform.position = new Vector3(rb.transform.position.x, yPos, rb.transform.position.z);
+            Debug.DrawRay(collision.contacts[collision.contactCount/2].point, collision.contacts[collision.contactCount/2].normal,Color.red);
         }
     }
-    private void OnCollisionExit(Collision collision)
+    void OnCollisionExit(Collision other)
     {
-
-        if (collision.transform.CompareTag("RunnableWall"))
+        if(other.transform.tag == "RunnableWall"&& !PlayerMovement.instace.grounded)
         {
-            cam.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
             isWallRunning = false;
             rb.useGravity = true;
         }
