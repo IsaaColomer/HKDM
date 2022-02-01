@@ -14,7 +14,7 @@ public class BulletCode : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(force*Camera.main.transform.forward-new Vector3(5,0,0), ForceMode.Impulse);
+        rb.AddForce(force*Camera.main.transform.forward, ForceMode.Impulse);
         lr = GetComponent<LineRenderer>();
         transform.forward = Camera.main.transform.forward;
         end.forward = Camera.main.transform.forward;
