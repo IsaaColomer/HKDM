@@ -9,17 +9,24 @@ public class Part : MonoBehaviour
     public float force;
     public bool startCount;
     private float timeToDestroy = 3f;
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+    void Start()
+    {
+        rb.centerOfMass = Vector3.zero;
+        rb.inertiaTensorRotation = Quaternion.identity;
         rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.useGravity = false;
         startCount = false;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {  
         if(startCount)
         {
             if(timeToDestroy>=0)
