@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GeneralShotgunScript : MonoBehaviour
 {
+    private Animator anim;
     public static GeneralShotgunScript instance;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public List<GameObject> bullets = new List<GameObject>();
@@ -16,11 +17,15 @@ public class GeneralShotgunScript : MonoBehaviour
     [SerializeField] private bool canShoot;
     public int perdigons;
     private bool reloading;
-    public float scaleLimit;
-    public Vector3 direction;
+
     // Start is called before the first frame update
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
+        anim.SetBool("isShooting", false);
         instance = this;
         reloading = false;
         time = .1f;
@@ -42,11 +47,13 @@ public class GeneralShotgunScript : MonoBehaviour
         {
             if(canShoot)
             {
+                anim.SetBool("isShooting", true);
                 for(int i = 0; i < perdigons; i++)
                 {
                     Shoot();
                 }
                 canShoot = false;
+                StartCoroutine(WaitForAnimation());
             }
 
         }
@@ -90,5 +97,10 @@ public class GeneralShotgunScript : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         thisBullet = bullets.Count;            
         reloading =false;
+    }
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSeconds(.2f);
+        anim.SetBool("isShooting", false);
     }
 }
