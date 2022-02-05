@@ -38,7 +38,7 @@ public class GeneralShotgunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0)&& this.gameObject.name == "Shotgun" && bullets.Count > 0 && !reloading)
+        if(Input.GetMouseButtonDown(0)&& this.gameObject.name == "Shotgun" && bullets.Count > 0 && !reloading)
         {
             if(canShoot)
             {
@@ -71,20 +71,11 @@ public class GeneralShotgunScript : MonoBehaviour
     }
     void Shoot()
     {
-        float randomRadius = UnityEngine.Random.Range( -scaleLimit, scaleLimit );        
-         
-        float randomAngle = UnityEngine.Random.Range ( -(float)(2*Math.PI), 2 * Mathf.PI );
-         
-         //Calculating the raycast direction
-          direction = new Vector3(
-             randomRadius * Mathf.Cos( randomAngle ),
-             randomRadius * Mathf.Sin( randomAngle ),
-             10f
-         );
-        direction = firePoint.TransformDirection(direction.normalized);
         Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bulletPrefab.GetComponent<ShotgunBulletCode>().rb.AddForce(direction*25, ForceMode.Impulse);
-        bullets.RemoveAt(thisBullet-1);
+
+        if(thisBullet >= 0)
+            bullets.RemoveAt(thisBullet-1);
+
         thisBullet--;
     }
 
