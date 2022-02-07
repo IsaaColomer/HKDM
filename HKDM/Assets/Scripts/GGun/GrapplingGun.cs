@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class GrapplingGun : MonoBehaviour {
-
-    private LineRenderer lr;
+public class GrapplingGun : MonoBehaviour 
+{
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
@@ -13,8 +12,8 @@ public class GrapplingGun : MonoBehaviour {
     public RaycastHit hit;
     private Transform hittedGameObject;
 
-    void Awake() {
-        lr = GetComponent<LineRenderer>();
+    void Awake() 
+    {
         isGrappling = false;
     }
 
@@ -67,8 +66,6 @@ public class GrapplingGun : MonoBehaviour {
                 joint.spring = 4.5f;
                 joint.damper = 7f;
                 joint.massScale = 4.5f;
-
-                lr.positionCount = 2;
                 currentGrapplePosition = gunTip.position;
             }
 
@@ -82,7 +79,6 @@ public class GrapplingGun : MonoBehaviour {
     void StopGrapple() {
         hittedGameObject.GetComponent<LightCode>().hitted = false;
         isGrappling = false;
-        lr.positionCount = 0;
         Destroy(joint);
     }
 
@@ -93,9 +89,6 @@ public class GrapplingGun : MonoBehaviour {
         if (!joint) return;
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-        
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
     }
 
     public bool IsGrappling() {
